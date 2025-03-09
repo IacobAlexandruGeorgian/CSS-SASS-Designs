@@ -1,0 +1,27 @@
+.header {
+    height: 95vh;
+    background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.2), rgba($color-primary-dark, 0.2)), url(../img/hero.jpg);
+    background-size: cover; /* feat inside the box always */
+    background-position: top; /* top stays the same (doesn't crop) */
+    position: relative;
+
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* create a polygon image - bennettfeely.com/clippy */
+
+    &__logo-box {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+    }
+
+    &__logo {
+        height: 35px;
+    }
+    
+    &__text-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* center in the middle of the text-box */
+        text-align: center;
+    }
+}

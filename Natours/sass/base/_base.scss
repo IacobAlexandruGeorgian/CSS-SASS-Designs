@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; /* padding and border are no longer added to the total width and height */
+}
+
+html {
+    font-size: 62.5%; /* defines 1 rem */
+}
+
+body {
+    box-sizing: border-box;
+}

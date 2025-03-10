@@ -6,7 +6,8 @@
     position: relative;
 
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* create a polygon image - bennettfeely.com/clippy */
-
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    
     &__logo-box {
         position: absolute;
         top: 40px;

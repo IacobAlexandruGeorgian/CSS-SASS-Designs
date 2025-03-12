@@ -1,43 +1,43 @@
 @keyframes moveInLeft {
     0% {
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-100px); // Starts off-screen to the left
     }
 
     80% {
-        transform: translateX(10px);
+        transform: translateX(10px); // Overshoots slightly to create a bounce effect
     }
 
     100% {
         opacity: 1;
-        transform: translate(0);
+        transform: translate(0); // Ends at the original position
     }
 }
 
 @keyframes moveInRight {
     0% {
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(100px); // Starts off-screen to the right
     }
 
     80% {
-        transform: translateX(-10px);
+        transform: translateX(-10px); // Overshoots slightly to the left
     }
 
     100% {
         opacity: 1;
-        transform: translate(0);
+        transform: translate(0); // Ends at the original position
     }
 }
 
 @keyframes moveInBottom {
     0% {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(30px); // Starts slightly below the final position
     }
 
     100% {
         opacity: 1;
-        transform: translate(0);
+        transform: translate(0); // Moves to the original position
     }
 }

@@ -1,37 +1,40 @@
 .composition {
-    position: relative;
+    position: relative; // Allows absolute positioning of child elements
 
     &__photo {
-        width: 55%;
-        box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
-        border-radius: 2px;
-        position: absolute;
-        outline-offset: 2rem;
+        width: 55%; // Sets a fixed width for images
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .4); // Adds depth
+        border-radius: 2px; // Slight rounding for a soft look
+        position: absolute; // Positions images inside the container
+        outline-offset: 2rem; // Creates spacing around the outline when added
 
+        // Positions for individual images
         &--p1 {
             left: 0;
-            top: -2rem;
+            top: -2rem; // Moves slightly upwards
         }
-    
+
         &--p2 {
             right: 0;
-            top: 2rem;
+            top: 2rem; // Moves slightly downwards
         }
 
         &--p3 {
-            left: 20%;
-            top: 10rem;
+            left: 20%; // Centers more towards the middle
+            top: 10rem; // Pushes downward
         }
 
+        // Hover effect for individual photos
         &:hover {
-            outline: 1.5rem solid $color-primary;
-            transform: scale(1.05) translateY(-.5rem);
-            box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
-            z-index: 20;
+            outline: 1.5rem solid $color-primary; // Adds a border when hovered
+            transform: scale(1.05) translateY(-.5rem); // Slight scale-up & move up
+            box-shadow: 0 2.5rem 4rem rgba($color-black, .5); // Adds stronger shadow for depth
+            z-index: 20; // Brings hovered image above others
         }
     }
 
-    &:hover &__photo:not(:hover) { // select the photos are not hovered
-        transform: scale(.95);
+    // Effect for images that are not being hovered
+    &:hover &__photo:not(:hover) {
+        transform: scale(.95); // Slightly shrinks non-hovered images
     }
 }

@@ -1,7 +1,7 @@
 @mixin clearfix {
-    &::after {
-        content: "";
-        display: table;
-        clear: both;
+    &::after { 
+        content: "";  // Inserts an empty content block
+        display: table;  // Generates a table element (prevents collapse)
+        clear: both;  // Clears any floated elements
     }
 }

@@ -1,26 +1,28 @@
 .feature-box {
-    background-color: rgba($color-white, .8);
-    font-size: 1.5rem;
-    padding: 2.5rem;
-    text-align: center;
-    border-radius: 3px;
-    box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
-    transition: transform .3s;
+    background-color: rgba($color-white, .8); // Semi-transparent white background
+    font-size: 1.5rem; // Sets a consistent font size
+    padding: 2.5rem; // Adds spacing inside the box
+    text-align: center; // Centers text and icon
+    border-radius: 3px; // Soft rounded corners
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .15); // Subtle depth effect
+    transition: transform .3s; // Smooth transition effect for hover
 
     &__icon {
-        font-size: 6rem;
-        margin-bottom: .5rem;
-        display: inline-block;
+        font-size: 6rem; // Large icon size
+        margin-bottom: .5rem; // Spacing below the icon
+        display: inline-block; // Keeps icon inline but allows styling
+
+        // Creates a gradient effect on the icon text
         background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
-        -webkit-background-clip: text;
-        color: transparent;
+        -webkit-background-clip: text; // Clips gradient to text
+        color: transparent; // Makes the text itself transparent
     }
 
     &:hover {
-        transform: translateY(-1.5rem) scale(1.03);
+        transform: translateY(-1.5rem) scale(1.03); // Lifts and slightly enlarges the box
     }
 
     &__text {
-
+        // (Optional) You can add specific text styling here if needed
     }
 }

@@ -1,0 +1,61 @@
+.footer {
+    // Sets the background color using a variable and adds padding
+    background-color: $color-grey-dark-3;
+    padding: 10rem 0;  // Adds vertical padding (top and bottom)
+    font-size: 1.4rem;  // Sets the base font size
+
+    &__logo-box {
+        text-align: center;  // Centers the logo inside the footer
+        margin-bottom: 8rem;  // Adds space below the logo box
+    }
+
+    &__logo {
+        width: 15rem;  // Sets a fixed width for the logo
+        height: auto;  // Maintains the aspect ratio
+    }
+
+    &__navigation {
+        border-top: 1px solid $color-grey-light-2;  // Adds a border above the navigation section
+        padding: 2rem;  // Adds padding inside the navigation
+        display: inline-block;  // Ensures it takes only as much space as needed
+    }
+
+    &__list {
+        list-style: none;  // Removes default bullet points from the list
+    }
+
+    &__item {
+        display: inline-block;  // Displays list items in a row instead of a column
+
+        &:not(:last-child) {
+            margin-right: 1.5rem;  // Adds spacing between items except for the last one
+        }
+    }
+
+    &__link {
+        // Styles for normal and visited link states
+        &:link,
+        &:visited {
+            color: $color-grey-light-1;  // Sets the link color
+            background-color: none;  // Ensures no background color
+            text-decoration: none;  // Removes underline from links
+            text-transform: uppercase;  // Converts text to uppercase
+            display: inline-block;  // Allows transform effects to work properly
+        }
+
+        // Styles for hover and active states
+        &:hover,
+        &:active {
+            color: $color-primary;  // Changes color on hover
+            box-shadow: 0 1rem 2rem rgba($color-black, .4);  // Adds a shadow effect
+            transform: rotate(5deg) scale(1.3);  // Rotates and scales the link slightly for effect
+        }
+    }
+
+    &__copyright {
+        border-top: 1px solid $color-grey-dark;  // Adds a border above the copyright section
+        padding-top: 2rem;  // Adds spacing above the text
+        width: 80%;  // Limits the width of the copyright section
+        float: right;  // Aligns it to the right side of the footer
+    }
+}

@@ -1,5 +1,5 @@
 .card {
-    // functionality
+    // Enables 3D perspective effect for the flipping animation
     perspective: 150rem;
     -moz-perspective: 150rem;
     position: relative;
@@ -7,23 +7,26 @@
 
     &__side {
         height: 50rem;
-        transition: all .8s ease;
+        transition: all .8s ease; // Smooth transition for flip effect
         font-size: 2rem;
-        position: absolute;
+        position: absolute; // Allows front and back sides to overlap
         top: 0;
         left: 0;
         width: 100%;
-        backface-visibility: hidden;
+        backface-visibility: hidden; // Hides the back side when not flipped
         border-radius: 3px;
-        box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .15); // Soft shadow for depth
 
+        // Front side styling
         &--front {
             background-color: $color-white;
         }
 
+        // Back side styling
         &--back {
-            transform: rotateY(-180deg);
+            transform: rotateY(-180deg); // Initially hidden (flipped)
 
+            // Different background colors for each card variant
             &-1 {
                 background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
             }
@@ -38,24 +41,26 @@
         }
     }
 
+    // Flip animation on hover
     &:hover &__side--front {
-        transform: rotateY(180deg);
+        transform: rotateY(180deg); // Flips front side away
     } 
 
     &:hover &__side--back {
-        transform: rotateY(0);
+        transform: rotateY(0); // Flips back side into view
     } 
 
-    // front side styling
+    // Front side image section
     &__picture {
-        background-size: cover;
+        background-size: cover; // Ensures full image coverage
         height: 23rem;
-        background-blend-mode: screen; // design image with diffrent blends
-        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        background-blend-mode: screen; // Blends image with gradient
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); // Creates a slanted cut-off effect
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         border-top-left-radius: 3px;
         border-top-right-radius: 3px;
-        
+
+        // Different images for each card variant
         &--1 {
             background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../img/nat-5.jpg);
         }
@@ -63,12 +68,13 @@
         &--2 {
             background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), url(../img/nat-6.jpg);
         }
- 
+
         &--3 {
             background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark), url(../img/nat-7.jpg);
         }
     }
 
+    // Card heading styles
     &__heading {
         font-size: 2.8rem;
         font-weight: 300;
@@ -81,10 +87,12 @@
         width: 75%;
     }
 
+    // Colored span behind the heading text
     &__heading-span {
         padding: 1rem 1.5rem;
-        --webkit-box-decoration-break: clone;
+        --webkit-box-decoration-break: clone; // Ensures text styles apply across lines
 
+        // Different gradient backgrounds for each card
         &--1 {
             background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85), rgba($color-secondary-dark, .85));
         }
@@ -98,15 +106,15 @@
         }
     }
 
+    // Details section (list of features)
     &__details {
         padding: 3rem;
 
         ul {
-
             li {
-                list-style: none;
+                list-style: none; // Removes default bullets
                 width: 80%;
-                margin: 0 auto; // center a block element in a block element
+                margin: 0 auto; // Centers list within the card
 
                 li {
                     text-align: center;
@@ -114,37 +122,39 @@
                     padding: 1rem;
 
                     &:not(:last-child) {
-                        border-bottom: 1px solid $color-grey-light-2;
+                        border-bottom: 1px solid $color-grey-light-2; // Adds line between list items
                     }
                 }
             }
         }
     }
 
-    // back side styling
+    // Back side Call-to-Action section
     &__cta {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); // Centers button within the back card
         width: 90%;
         text-align: center;
     }
 
+    // Pricing box on the back side
     &__price-box {
         text-align: center;
         color: $color-white;
         margin-bottom: 8rem;
     }
 
+    // "Only" text above price
     &__price-only {
         font-size: 1.4rem;
         text-transform: uppercase;
     }
 
+    // Price text styling
     &__price-value {
         font-size: 6rem;
         font-weight: 100;
     }
-
 }

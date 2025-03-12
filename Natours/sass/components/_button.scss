@@ -1,89 +1,104 @@
 .btn {
+    &,
     &:link,
     &:visited {
-        text-transform: uppercase;
-        text-decoration: none;
-        padding: 15px 40px;
-        display: inline-block;
-        border-radius: 100px;
-        transition: all .2s;
-        position: relative;
-        font-size: $default-font-size;
+        text-transform: uppercase; // Converts text to uppercase
+        text-decoration: none; // Removes underline
+        padding: 15px 40px; // Adds padding to make the button look balanced
+        display: inline-block; // Ensures it behaves like a button (not a block)
+        border-radius: 100px; // Creates a fully rounded button
+        transition: all .2s; // Smooth transition effect
+        position: relative; // Required for pseudo-element positioning
+        font-size: $default-font-size; // Uses a predefined font size variable
+
+        border: none;
+        cursor: pointer;
     }
 
+    // Hover effect: Adds a slight "lifting" effect
     &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba($color-black, .2);
+        transform: translateY(-3px); // Moves the button slightly upward
+        box-shadow: 0 10px 20px rgba($color-black, .2); // Adds a shadow effect
 
         &::after {
-            transform: scaleX(1.4) scaleY(1.6);
-            opacity: 0;
+            transform: scaleX(1.4) scaleY(1.6); // Expands the pseudo-element
+            opacity: 0; // Fades out the pseudo-element
         }
     }
 
-    &:active {
-        transform: translateY(-1px);
-        box-shadow: 0 5px 10px rgba($color-black, .2);
+    // Click effect: Slightly reduces the lift when button is pressed
+    &:active,
+    &:focus {
+        outline: none;
+        transform: translateY(-1px); // Moves button slightly down
+        box-shadow: 0 5px 10px rgba($color-black, .2); // Reduces shadow intensity
     }
 
+    // White button variant
     &--white {
-        background-color: $color-white;
-        color: $color-grey-dark;
+        background-color: $color-white; // Sets white background
+        color: $color-grey-dark; // Dark grey text for contrast
 
         &::after {
-            background-color: $color-white;
+            background-color: $color-white; // Matches the background color
         }
     }
 
+    // Green button variant
     &--green {
-        background-color: $color-primary;
-        color: $color-white;
+        background-color: $color-primary; // Uses the primary theme color
+        color: $color-white; // Ensures text is readable
 
         &::after {
-            background-color: $color-primary;
+            background-color: $color-primary; // Matches button color
         }
     }
 
+    // Pseudo-element for the hover effect animation
     &::after {
-        content: "";
+        content: ""; // Creates an empty element for effects
         display: inline-block;
         height: 100%;
         width: 100%;
-        border-radius: 100px;
+        border-radius: 100px; // Makes it circular
         position: absolute;
         top: 0;
         left: 0;
-        z-index: -1;
-        transition: all .4s;
+        z-index: -1; // Places it behind the button
+        transition: all .4s; // Ensures smooth scaling animation
     }
 
+    // Animated button variant
     &--animated {
-        animation: moveInBottom .5s ease-out .75;
-        animation-fill-mode: backwards;
+        animation: moveInBottom .5s ease-out .75; // Applies animation on load
+        animation-fill-mode: backwards; // Ensures animation starts from initial state
     }
 }
 
+// Styling for text-only buttons (links that look like buttons)
 .btn-text {
     &:link,
     &:visited {
-        font-size: $default-font-size;
-        color: $color-primary;
+        font-size: $default-font-size; // Ensures consistent font size
+        color: $color-primary; // Uses primary color for text
         display: inline-block;
-        text-decoration: none;
-        border-bottom: 1px solid $color-primary;
-        padding: 3px;
-        transition: all .2s;
+        text-decoration: none; // Removes default underline
+        border-bottom: 1px solid $color-primary; // Adds an underline effect
+        padding: 3px; // Small padding to make it stand out
+        transition: all .2s; // Smooth hover transition
     }
 
+    // Hover effect: Changes background and text color
     &:hover {
-        background-color: $color-primary;
-        color: $color-white;
-        box-shadow: 0 1rem 2rem rgba($color-black, .15);
-        transform: translateY(-2px);
+        background-color: $color-primary; // Changes background to primary color
+        color: $color-white; // Changes text to white for contrast
+        box-shadow: 0 1rem 2rem rgba($color-black, .15); // Adds slight shadow effect
+        transform: translateY(-2px); // Lifts the button slightly
     }
 
+    // Click (active) effect: Reduces the shadow for a "pressed" look
     &:active {
-        box-shadow: 0 1rem 1rem rgba($color-black, .15);
-        transform: translateY(0);
+        box-shadow: 0 1rem 1rem rgba($color-black, .15); // Reduces shadow
+        transform: translateY(0); // Moves button back to original position
     }
 }

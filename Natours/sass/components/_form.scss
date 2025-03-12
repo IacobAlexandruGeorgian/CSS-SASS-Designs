@@ -1,0 +1,109 @@
+.form {
+
+    // Styling for each group of form input fields
+    &__group:not(:last-child) {
+        // Adds space between form groups except the last one
+        margin-bottom: 1rem;
+    }
+
+    // Styling for input fields
+    &__input {
+        font-size: 1.5rem; /* Sets the font size of the input text */
+        font-family: inherit; /* Inherits the font family from the parent */
+        color: inherit; /* Inherits the text color from the parent */
+        padding: 1.5rem 2rem; /* Adds padding inside the input fields */
+        border-radius: 2px; /* Rounds the corners of the input fields */
+        background-color: rgba($color-white, 1); /* Sets the background to white */
+        border: none; /* Removes the default border */
+        border-bottom: 3px solid transparent; /* Adds a transparent bottom border */
+        width: 40%; /* Sets the width of the input fields to 50% of the parent */
+        display: block; /* Makes the input a block-level element (takes up full width) */
+
+        /* Styling when the input field is focused (clicked on) */
+        &:focus {
+            outline: none; /* Removes the default outline */
+            box-shadow: 0 1rem 2rem rgba($color-black, .1); /* Adds a subtle shadow to highlight the input */
+            border-bottom: 3px solid $color-primary; /* Adds a colored bottom border */
+            transition: all .3s;
+        }
+
+        /* Styling when the input is invalid and focused (e.g., wrong email format) */
+        &:focus:invalid {
+            border-bottom: $color-secondary-dark; /* Changes the border color to the secondary color when invalid */
+        }
+
+        /* Styling for the placeholder text */
+        &::-webkit-input-placeholder {
+            color: $color-grey-dark-2; /* Sets the placeholder text color */
+        }
+    }
+
+    // Styling for the labels associated with each input field
+    &__label {
+        font-size: 2.2rem; /* Sets the font size for the label */
+        font-weight: 700; /* Makes the label text bold */
+        margin-left: 2rem; /* Adds space on the left side of the label */
+        margin-top: .7rem; /* Adds a slight margin at the top of the label */
+        display: block; /* Makes the label a block element */
+        transition: all .3s; /* Adds a smooth transition effect for changes */
+    }
+
+    // When the input placeholder is shown, hide the label
+    &__input:placeholder-shown + &__label {
+        opacity: 0; /* Hides the label */
+        visibility: hidden; /* Ensures the label is not visible */
+        transform: translateY(-4rem); /* Moves the label up out of view */
+    }
+
+    // Style for the radio group container
+    &__radio-group {
+        width: 20%;  // Sets the width of each radio group container to 20%
+        display: inline-block;  // Ensures the radio groups are displayed inline (next to each other)
+    }
+
+    // Hides the default radio button input
+    &__radio-input {
+        display: none;  // Hides the original radio button input, since we're using custom styling
+    }
+
+    // Style for the radio label, which is clickable
+    &__radio-label {
+        font-size: $default-font-size;  // Sets the font size of the label to the default font size (variable)
+        cursor: pointer;  // Changes the cursor to a pointer (hand) when hovering over the label
+        position: relative;  // Enables absolute positioning of the custom radio button inside the label
+        padding-left: 4.5rem;  // Adds space to the left of the label to make room for the custom radio button
+    }
+
+    // Style for the custom radio button circle
+    &__radio-button {
+        height: 3rem;  // Sets the height of the radio button to 3rem
+        width: 3rem;   // Sets the width of the radio button to 3rem (making it a circle)
+        border: 5px solid $color-primary;  // Adds a 5px border around the circle with the primary color
+        border-radius: 50%;  // Makes the button circular (by rounding the corners)
+        display: inline-block;  // Ensures the button is inline with the label text
+        position: absolute;  // Positions the button absolutely inside the label
+        left: 0;  // Aligns the radio button to the left edge of the label
+        top: -.4rem;  // Moves the button slightly up to center it vertically with respect to the label
+    }
+
+    // Style for the inner dot of the radio button when checked
+    &__radio-button::after {
+        content: "";  // Generates a new empty element (the inner dot)
+        display: block;  // Makes it a block element
+        height: 1rem;  // Sets the height of the dot to 1rem
+        width: 1rem;   // Sets the width of the dot to 1rem (making it a small circle)
+        border-radius: 50%;  // Rounds the dot to make it circular
+        position: absolute;  // Positions the dot inside the radio button
+        top: 50%;  // Centers the dot vertically within the radio button
+        left: 50%;  // Centers the dot horizontally within the radio button
+        transform: translate(-50%, -50%);  // Corrects the centering by adjusting the dot's position
+        background-color: $color-primary;  // Sets the dot color to the primary color
+        opacity: 0;  // Initially hides the dot (opacity 0)
+        transition: opacity .2s;  // Adds a smooth transition effect when the opacity changes
+    }
+
+    // When the radio button is checked, make the dot inside the button visible
+    &__radio-input:checked + &__radio-label &__radio-button::after {
+        opacity: 1;  // Changes the opacity to 1 (makes the inner dot visible) when the radio button is checked
+    }
+}

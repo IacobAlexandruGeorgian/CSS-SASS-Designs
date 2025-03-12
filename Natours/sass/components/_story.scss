@@ -1,0 +1,58 @@
+.story {
+    width: 75%;
+    margin: 0 auto; // Centers the element horizontally
+    box-shadow: 0 3rem 6rem rgba($color-black, .1); // Adds a soft shadow effect
+    background-color: rgba($color-white, .6); // Uses a variable for the background color
+    border-radius: 3px; // Rounds the corners slightly
+    padding: 6rem;
+    padding-left: 9rem; // Extra left padding for layout adjustments
+    font-size: $default-font-size; // Uses a variable for text size
+    transform: skewX(-12deg); // Skews the entire element to the left
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        float: left; // Floats the shape to the left
+        --webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%); // Makes content wrap around a circular shape
+        clip-path: circle(50% at 50% 50%); // Clips the image into a circle
+        -webkit-clip-path: circle(50% at 50% 50%);
+        transform: translateX(-3rem) skewX(12deg); // Moves it slightly left
+        position: relative;
+    }
+
+    &__img {
+        height: 100%; // Ensures the image takes up the full height of its container
+        transform: translateX(-4rem) scale(1.4); // Shifts the image left and scales it up for effect
+        backface-visibility: hidden; // Ensures the back of the image is not visible when flipped (if it's part of a 3D effect)
+        transition: all .5s; // Smooth transition for all properties during hover
+    }
+    
+    &__text {
+        transform: skewX(-12deg); // Skews the text to give it a dynamic, slanted appearance
+    }
+    
+    &__caption {
+        position: absolute; // Positions the caption within its container
+        top: 50%; // Centers the caption vertically
+        left: 50%; // Centers the caption horizontally
+        transform: translate(-50%, -50%); // Centers the caption perfectly
+        color: $color-white; // Makes the caption text white for contrast
+        text-transform: uppercase; // Uppercases the text for emphasis
+        font-size: 1.7rem; // Sets a readable font size for the caption
+        text-align: center; // Centers the text inside the caption box
+        opacity: 0; // Starts with the caption hidden (fully transparent)
+        transition: all .5s; // Smooth transition for opacity and transformation
+        backface-visibility: hidden; // Prevents the back of the caption from being shown (if it's part of a 3D effect)
+    }
+    
+    &:hover &__caption {
+        opacity: 1; // On hover, make the caption fully visible
+        transform: translateY(-50%, -50%); // This keeps the caption in the same position (centering it)
+    }
+    
+    &:hover &__img {
+        transform: translateX(-4rem) scale(1); // Resets the image to its original scale on hover
+        filter: blur(3px) brightness(80%); // Adds a blur effect and darkens the image on hover for emphasis
+    }
+}

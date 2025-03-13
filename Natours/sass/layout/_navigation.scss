@@ -1,61 +1,86 @@
 .navigation {
-
-
+    // Hide the checkbox input (used for toggling navigation)
     &__checkbox {
         display: none;
     }
 
+    // Styling for the navigation button (hamburger menu)
     &__button {
-        background-color: $color-white;
+        background-color: $color-white; // White background
         height: 7rem;
         width: 7rem;
         position: fixed;
         top: 6rem;
         right: 6rem;
-        border-radius: 50%;
-        z-index: 2000;
-        box-shadow: 0 1rem 3rem rgba($color-black, .1);
+        border-radius: 50%; // Circular button
+        z-index: 2000; // Ensures it's above other elements
+        box-shadow: 0 1rem 3rem rgba($color-black, .1); // Adds a slight shadow
+        text-align: center;
+        cursor: pointer; // Pointer cursor to indicate it's clickable
+
+        @include respond(tab-port) {
+            top: 4.5rem;
+            right: 4.5rem;
+        }
+
+        @include respond(phone) {
+            top: 3rem;
+            right: 3rem;
+        }
     }
 
+    // Background effect of the navigation menu
     &__background {
         height: 6rem;
         width: 6rem;
-        border-radius: 50%;
+        border-radius: 50%; // Circular background
         position: fixed;
         top: 6.5rem;
         right: 6.5rem;
-        background-image: radial-gradient($color-primary-light, $color-primary-dark);
-        z-index: 1000;
-        transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1)
+        background-image: radial-gradient($color-primary-light, $color-primary-dark); // Gradient background
+        z-index: 1000; // Below the button but above other content
+        transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1); // Smooth scaling effect
+
+        @include respond(tab-port) {
+            top: 4.5rem;
+            right: 4.5rem;
+        }
+
+        @include respond(phone) {
+            top: 3rem;
+            right: 3rem;
+        }
     }
 
+    // Navigation menu (hidden by default)
     &__nav {
-        height: 100vh;
+        height: 100vh; // Full height of the viewport
         position: fixed;
         top: 0;
         left: 0;
-        z-index: 1500;
-        background-color: orangered;
-
-        opacity: 0;
+        z-index: 1500; // Above the background but below the button
+        opacity: 0; // Initially hidden
         width: 0;
-        transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55); // Smooth animation for appearance
     }
 
+    // Navigation list container (centers items)
     &__list {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); // Centers the list
         list-style: none;
         text-align: center;
         width: 100%;
     }
 
+    // Individual navigation items
     &__item {
         margin: 1rem;
     }
 
+    // Navigation links
     &__link {
         &:link,
         &:visited {
@@ -63,13 +88,14 @@
             font-size: 3rem;
             font-weight: 300;
             padding: 1rem 2rem;
-            color: $color-white;
+            color: $color-white; // White text
             text-decoration: none;
-            text-transform: uppercase;
+            text-transform: uppercase; // Makes text uppercase
             background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
             background-size: 220%;
-            transition: all .4s;
+            transition: all .4s; // Smooth animation
 
+            // Adds spacing before the link text
             span {
                 margin-right: 1.5rem;
                 display: inline-block;
@@ -78,20 +104,69 @@
 
         &:hover,
         &:active {
-            background-position: 100%;
-            color: $color-primary;
-            transform: translateX(1rem);
+            background-position: 100%; // Moves gradient effect
+            color: $color-primary; // Changes text color
+            transform: translateX(1rem); // Moves text slightly to the right
         }
     }
 
+    // Functionality for opening the menu
     &__checkbox:checked ~ &__background {
-        transform: scale(80);
+        transform: scale(80); // Expands background when checkbox is checked
     }
 
     &__checkbox:checked ~ &__nav {
-        opacity: 1;
-        width: 100%;
+        opacity: 1; // Makes navigation visible
+        width: 100%; // Expands it to full width
     }
 
+    // Styling for the hamburger icon
+    &__icon {
+        position: relative;
+        margin-top: 3.5rem;
 
+        &,
+        &::before,
+        &::after {
+            width: 3rem;
+            height: 2px;
+            background-color: $color-grey-dark-3; // Dark grey color for icon
+            display: inline-block;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            transition: all .2s; // Smooth animation
+        }
+
+        &::before { top: -.8rem } // Position top line
+        &::after { top: .8rem }  // Position bottom line
+    }
+
+    // Animations for hover effect on button
+    &__button:hover &__icon:before {
+        top: -1rem; // Moves top line up
+    }
+
+    &__button:hover &__icon:after {
+        top: 1rem; // Moves bottom line down
+    }
+
+    // Transforming the hamburger icon into an 'X' when menu is active
+    &__checkbox:checked + &__button &__icon {
+        background-color: transparent; // Hides middle bar
+    }
+
+    &__checkbox:checked + &__button &__icon::before {
+        top: 0;
+        transform: rotate(135deg); // Rotates top line to form 'X'
+    }
+
+    &__checkbox:checked + &__button &__icon::after {
+        top: 0;
+        transform: rotate(-135deg); // Rotates bottom line to form 'X'
+    }
 }

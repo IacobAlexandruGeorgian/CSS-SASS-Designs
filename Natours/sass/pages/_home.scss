@@ -2,6 +2,10 @@
     background-color: $color-grey-light-1; // Sets a light grey background color
     padding: 25rem 0; // Adds vertical padding (top and bottom) to the section
     margin-top: -20vh; // Moves the section up, creating an overlapping effect with the section above
+
+    @include respond(tab-port) {
+        padding: 20rem 0;
+    }
 }
 
 .section-features {
@@ -15,34 +19,64 @@
     & > * { // Applies styles to direct children of the section
         transform: skewY(7deg); // Skews the child elements in the opposite direction for contrast
     }
+
+    @include respond(tab-port) {
+        padding: 10rem 0;
+    }
 }
 
 .section-tours {
     background-color: $color-grey-light-1; // Sets a light grey background color
     padding: 25rem 0 15rem 0; // Adds vertical padding (top and bottom), with more space at the top
     margin-top: -10rem; // Moves the section up, overlapping with the section above
+
+    @include respond(tab-port) {
+        padding: 20rem 0 10rem 0;
+    }
 }
 
 .section-stories {
     position: relative; // Positions the section relative to its normal position, enabling absolute positioning within it if necessary
     padding: 15rem 0; // Adds vertical padding for spacing
+
+    @include respond(tab-port) {
+        padding: 10rem 0;
+    }
 }
 
 .section-book {
     padding: 15rem; // Adds padding around the section
     background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark); // Adds a gradient background
 
-    .book {
-        background-image: linear-gradient(105deg, rgba($color-white, .9) 0%, rgba($color-white, .9) 50%, transparent 50%), url(../img/nat-10.jpg); // Creates a gradient overlay over the background image
-        background-size: 100%; // Ensures the background image covers the entire container
-        border-radius: 3px; // Softens the corners of the container
-        box-shadow: 0 1.5rem 4rem rgba($color-black, .2); // Adds a subtle shadow for depth
+    @include respond(tab-port) {
+        padding: 10rem 0;
+    }
+}
 
-        height: 50rem; // Sets a fixed height for the book container
+.book {
+    background-image: linear-gradient(105deg, rgba($color-white, .9) 0%, rgba($color-white, .9) 50%, transparent 50%), url(../img/nat-10.jpg); // Creates a gradient overlay over the background image
+    background-size: 100%; // Ensures the background image covers the entire container
+    border-radius: 3px; // Softens the corners of the container
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .2); // Adds a subtle shadow for depth
 
-        &__form {
-            width: 50; // Sets width of the form (presumably 50% of the parent width, but the unit is missing, might need to be 50%)
-            padding: 6rem; // Adds padding inside the form
+    @include respond(tab-land) {
+        background-image: linear-gradient(105deg, rgba($color-white, .9) 0%, rgba($color-white, .9) 65%, transparent 65%), url(../img/nat-10.jpg); // Creates a gradient overlay over the background image
+    }
+
+    @include respond(tab-port) {
+        background-image: linear-gradient(to right, rgba($color-white, .9) 0%, rgba($color-white, .9) 100%), url(../img/nat-10.jpg); // Creates a gradient overlay over the background image
+    }
+
+    &__form {
+        width: 50; // Sets width of the form (presumably 50% of the parent width, but the unit is missing, might need to be 50%)
+        padding: 6rem; // Adds padding inside the form
+
+        @include respond(tab-land) {
+            width: 65%; // Creates a gradient overlay over the background image
+        }
+
+        @include respond(tab-port) {
+            width: 100%; // Creates a gradient overlay over the background image
         }
     }
 }

@@ -9,16 +9,37 @@
     font-size: $default-font-size; // Uses a variable for text size
     transform: skewX(-12deg); // Skews the entire element to the left
 
+    @include respond(tab-port) {
+        width: 100%;
+        padding: 4rem;
+        padding-left: 7rem;
+    }
+
+    @include respond(phone) {
+        transform: skewX(0);
+    }
+
     &__shape {
         width: 15rem;
         height: 15rem;
         float: left; // Floats the shape to the left
-        --webkit-shape-outside: circle(50% at 50% 50%);
-        shape-outside: circle(50% at 50% 50%); // Makes content wrap around a circular shape
-        clip-path: circle(50% at 50% 50%); // Clips the image into a circle
-        -webkit-clip-path: circle(50% at 50% 50%);
+
         transform: translateX(-3rem) skewX(12deg); // Moves it slightly left
         position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+
+        @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+            clip-path: circle(50% at 50% 50%); // Clips the image into a circle
+            -webkit-clip-path: circle(50% at 50% 50%);
+            --webkit-shape-outside: circle(50% at 50% 50%);
+            shape-outside: circle(50% at 50% 50%); // Makes content wrap around a circular shape
+            border-radius: none;
+        }
+
+        @include respond(phone) {
+            transform: translateX(-3rem) skewX(0);
+        }
     }
 
     &__img {
@@ -30,6 +51,10 @@
     
     &__text {
         transform: skewX(-12deg); // Skews the text to give it a dynamic, slanted appearance
+
+        @include respond(phone) {
+            transform: skewX(0);
+        }
     }
     
     &__caption {

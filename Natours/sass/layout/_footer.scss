@@ -11,6 +11,10 @@
     &__logo-box {
         text-align: center;  // Centers the logo inside the footer
         margin-bottom: 8rem;  // Adds space below the logo box
+
+        @include respond(tab-port) {
+            margin-bottom: 6rem;
+        }
     }
 
     &__logo {

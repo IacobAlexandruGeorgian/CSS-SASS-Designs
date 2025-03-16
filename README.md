@@ -15,3 +15,8 @@
 ![image](https://github.com/user-attachments/assets/2fb55710-a558-4ec7-a5df-28d805795dba)
 
 # Trillo
+
+![image](https://github.com/user-attachments/assets/1571844e-6783-428d-908d-8120c8192457)
+
+![image](https://github.com/user-attachments/assets/a3df811f-e748-4932-ab6d-afab469891af)
+

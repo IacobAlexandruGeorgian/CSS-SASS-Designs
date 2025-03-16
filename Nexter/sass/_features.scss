@@ -1,0 +1,46 @@
+.features {
+    grid-column: center-start / center-end; // The section spans from center-start to center-end in the grid
+
+    margin: 15rem 0; // Adds vertical spacing above and below the section
+
+    // Check if the browser supports CSS Grid
+    @supports(display: grid) {
+        display: grid; // Enables CSS Grid layout
+        // grid-template-columns: repeat(3, 1fr); // Originally, three equal columns (commented out)
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));  
+        // Responsive grid:
+        // - Automatically adjusts the number of columns based on available space
+        // - Minimum width: 25rem, Maximum: 1fr (fills available space)
+        
+        grid-gap: 6rem; // Adds spacing between grid items
+        align-items: start; // Aligns items to the start of each row
+    }
+}
+
+.feature {
+    float: left; // Ensures old browsers without Grid support display items in a left-aligned layout
+    width: 33.3333%; // Divides the container into 3 equal parts (for non-grid support)
+    margin-bottom: 6rem; // Adds spacing below each feature item
+
+    @supports(display: grid) {
+        width: auto; // Allows width to be controlled by the grid
+        margin-bottom: 0; // Removes the margin-bottom as grid handles spacing
+    }
+
+    display: grid; // Uses grid layout for individual feature items
+    grid-template-columns: min-content 1fr; // Two columns: one for the icon (auto-size) and one for text (flexible)
+    grid-row-gap: 1.5rem; // Vertical spacing between grid items
+    grid-column-gap: 2.5rem; // Horizontal spacing between icon and text
+
+    &__icon {
+        fill: $color-primary; // Sets the icon color
+        width: 4.5rem; // Defines the icon size
+        height: 4.5rem;
+        grid-row: 1 / span 2; // Icon spans 2 rows
+        transform: translateY(-1rem); // Moves the icon slightly up for better alignment
+    }
+
+    &__text {
+        font-size: 1.7rem; // Sets text size
+    }
+}

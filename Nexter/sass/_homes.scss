@@ -1,0 +1,85 @@
+.homes {
+    grid-column: center-start / center-end; // Spans across the center section of the grid
+    margin: 15rem 0; // Adds vertical spacing
+
+    display: grid; // Enables CSS Grid layout
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); 
+    // - Creates a responsive layout
+    // - Automatically fits as many columns as possible
+    // - Each column must be at least 25rem wide, but can grow to fill available space
+
+    grid-gap: 7rem; // Adds space between grid items
+}
+
+.home {
+    background-color: $color-grey-light-1; // Light grey background
+
+    display: grid; // Uses CSS Grid
+    grid-template-columns: repeat(2, 1fr); 
+    // - Two equal columns for layout
+    grid-row-gap: 3.5rem; // Adds vertical spacing inside the card
+
+    &__img {
+        width: 100%; // Makes the image responsive
+        grid-row: 1 / 2; // Places the image in the first row
+        grid-column: 1 / -1; // Makes it span across all columns
+        z-index: 1; // Places the image behind other elements
+    }
+
+    &__like {
+        grid-row: 1 / 2; // Places it in the first row
+        grid-column: 2 / 3; // Aligns it in the second column
+        fill: $color-primary; // Uses primary color for icon
+        height: 2.5rem;
+        width: 2.5rem;
+        z-index: 2; // Places it above the image
+        justify-self: end; // Aligns it to the right
+        margin: 1rem; // Adds some spacing
+    }
+
+    &__name {
+        grid-row: 1 / 2;
+        grid-column: 1 / -1; // Spans across all columns
+        justify-self: center; // Centers horizontally
+        align-self: end; // Positions it at the bottom of the image
+        z-index: 3; // Places it above the image
+
+        width: 80%; // Makes it smaller than full width
+        font-family: $font-display;
+        font-size: $default-font-size;
+        text-align: center;
+        padding: 1.25rem;
+        background-color: $color-secondary; // Secondary color background
+        color: #fff; // White text
+        font-weight: 400;
+        transform: translateY(50%); // Moves it slightly down for better placement
+    }
+
+    &__location,
+    &__rooms {
+        margin-top: 2.5rem;
+    }
+
+    &__location,
+    &__rooms,
+    &__area,
+    &__price {
+
+        font-size: 1.5rem;
+        margin-left: 2rem; // Aligns to the left
+
+        display: flex; // Uses flexbox for icon + text alignment
+        align-items: center; // Aligns items vertically
+
+        svg {
+            fill: $color-primary; // Uses primary color for icons
+            height: 2rem;
+            width: 2rem;
+            margin-right: 1rem; // Adds spacing between icon and text
+        }
+    }
+
+    &__btn {
+        grid-column: 1 / -1; // Makes it span across all columns
+    }
+}

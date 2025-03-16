@@ -10,6 +10,83 @@ $color-grey-light-2: #aaa;
 $color-grey-dark-1: #54483A;
 $color-grey-dark-2: #6D5D4B;
 
+$default-font-size: 1.7rem;
+
 // FONT VARIABLES
 $font-primary: 'Nunito', sans-serif;
 $font-display: 'Josefin Sans', sans-serif;
+
+// RESPONSIVE BREAKPOINTS
+$bp-largest: 75em;   // 1200px
+$bp-large: 62.5em;   // 1000px
+$bp-medium: 50em;    // 800px;
+$bp-small: 37.5em;    // 600px;
+
+// Reset styles and ensure consistent box-sizing
+*,  
+*::before,  
+*::after {  
+    margin: 0; // Removes default margin  
+    padding: 0; // Removes default padding  
+    box-sizing: inherit; // Inherits box-sizing from the html element  
+}
+
+// Set base font size and box-sizing model
+html {  
+    box-sizing: border-box; // Makes width calculations include padding and border  
+    font-size: 62.5%; // Sets 1rem = 10px for easier rem-based calculations
+
+    @media only screen and (max-width: $bp-largest) {  
+        font-size: 50%; // Reduces font size when screen width is below $bp-largest  
+    }  
+}
+
+// Base styling for body
+body {  
+    font-family: $font-primary; // Uses a predefined primary font  
+    color: $color-grey-dark-2; // Sets text color  
+    font-weight: 300; // Uses a light font weight  
+    line-height: 1.6; // Increases readability with better spacing  
+}
+
+// Main grid container layout
+.container {  
+    display: grid; // Uses CSS Grid layout  
+    grid-template-rows: 80vh min-content 40vw repeat(3, min-content);  
+    // Defines row heights: 
+    // - 80vh (takes 80% of viewport height)
+    // - min-content (fits to content height)
+    // - 40vw (40% of viewport width)
+    // - repeat(3, min-content) (three more rows that fit content)
+
+    grid-template-columns:  
+        [sidebar-start] 8rem [sidebar-end full-start]  
+        minmax(6rem, 1fr) [center-start]  
+        repeat(8, [col-start] minmax(min-content, 14rem) [col-end])  
+        [center-end] minmax(6rem, 1fr) [full-end];  
+    // Defines columns:
+    // - Sidebar: 8rem wide
+    // - Flexible spacing: minmax(6rem, 1fr) for responsiveness
+    // - 8 repeat columns, each min 14rem wide
+    // - More flexible spacing before closing the grid
+
+    // Adjust grid for medium screens (e.g., tablets)
+    @media only screen and (max-width: $bp-large) {  
+        grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);  
+        // Adds a new first row of 6rem (for a navbar/header)
+
+        grid-template-columns:  
+            [full-start] minmax(6rem, 1fr) [center-start]  
+            repeat(8, [col-start] minmax(min-content, 14rem) [col-end])  
+            [center-end] minmax(6rem, 1fr) [full-end];  
+        // Removes sidebar and expands main content area  
+    }
+
+    // Adjust grid for smaller screens (e.g., mobile)
+    @media only screen and (max-width: $bp-medium) {  
+        grid-template-rows: 6rem calc(100vh - 6rem);  
+        // Creates only two rows:
+        // - First row: 6rem (header/navbar)
+        // - Second row: Takes up the remaining viewport height  
+    }
+}

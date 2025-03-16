@@ -1,0 +1,78 @@
+.header {
+    background-color: $color-grey-dark-1; // Dark background color
+    grid-column: full-start / col-end 6; // Spans from the start of the grid to column 6
+
+    background-image: linear-gradient(rgba($color-secondary, .93), rgba($color-secondary, .93)), url(../img/hero.jpeg);
+    // Creates a dark overlay on top of the background image for better text contrast
+    background-size: cover; // Ensures the image covers the entire header
+    background-position: center; // Centers the background image
+
+    padding: 8rem; // Adds spacing inside the header
+    padding-top: 4rem; // Reduces top padding slightly
+
+    display: grid; // Enables CSS Grid layout
+    grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+    // - 1st row: flexible space
+    // - 2nd row: minimum size for content
+    // - 3rd row: between 6rem and minimum content height
+    // - 4th row: flexible space
+
+    grid-template-columns: minmax(min-content, max-content); 
+    // Ensures content doesn’t shrink too much or grow too large
+
+    grid-row-gap: 1.5rem; // Adds space between grid rows
+    justify-content: center; // Centers content horizontally
+
+    // Responsive Design
+    @media only screen and (max-width: $bp-medium) {
+        grid-column: 1 / -1; // Makes header span the full width on smaller screens
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        padding: 5rem; // Reduces padding for smaller screens
+    }
+
+    &__logo {
+        height: 3rem; // Sets logo height
+        justify-self: center; // Centers the logo within the header
+    }
+
+    &__btn {
+        align-self: start; // Aligns the button to the start of its grid cell
+        justify-self: start; // Aligns it to the left within its grid cell
+    }
+
+    &__seenon-text {
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr; 
+        // Three columns: flexible - text - flexible
+        grid-column-gap: 1.5rem; // Adds space between text and lines
+        align-items: center; // Centers items vertically
+
+        font-size: $default-font-size; // Uses default font size
+        color: $color-grey-light-2; // Light grey text for contrast
+
+        &::before,
+        &::after {
+            content: ""; // Creates decorative lines before and after the text
+            height: 1px; // Thin horizontal lines
+            display: block;
+            background-color: currentColor; // Uses the same color as the text
+        }
+    }
+
+    &__seenon-logos {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); 
+        // Creates 4 equal columns for brand logos
+        grid-column-gap: 3rem; // Adds spacing between logos
+        justify-items: center; // Centers logos horizontally
+        align-items: center; // Aligns logos vertically
+
+        img {
+            max-height: 2.5rem; // Limits logo height for consistency
+            max-width: 100%; // Prevents logos from overflowing
+            filter: brightness(70%); // Slightly darkens logos for a subtle effect
+        }
+    }
+}

@@ -1,0 +1,43 @@
+.realtors {
+    background-color: $color-secondary; // Sets background color
+    grid-column: col-start 7 / full-end; // Positions section in the grid
+    padding: 3rem; // Adds padding around content
+
+    display: grid; // Enables CSS Grid
+    align-content: center; // Centers content vertically
+    justify-content: center; // Centers content horizontally
+    justify-items: center; // Aligns child items in the center
+    grid-row-gap: 2rem; // Adds vertical spacing between elements
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-column: 1 / -1; // Makes section full-width on smaller screens
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: min-content max-content;
+        grid-column-gap: 2rem;
+        grid-row-gap: 5vh;
+        align-items: center;
+
+        @media only screen and (max-width: $bp-medium) {
+            grid-template-columns: repeat(3, min-content max-content);
+        }
+
+        @media only screen and (max-width: $bp-small) {
+            grid-template-columns: min-content max-content;
+        }
+    }
+
+    &__img {
+        width: 7rem; // Sets image width
+        border-radius: 50%; // Makes the image circular
+        display: block; // Ensures proper alignment
+    }
+
+    &__sold {
+        text-transform: uppercase; // Makes text all uppercase
+        color: $color-grey-light-2; // Sets text color
+        margin-top: -3px; // Slightly adjusts spacing
+    }
+}

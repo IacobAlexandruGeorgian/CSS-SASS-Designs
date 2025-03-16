@@ -1,0 +1,45 @@
+.sidebar {
+    background-color: $color-primary; // Sets the sidebar's background color
+    grid-column: sidebar-start / sidebar-end; // Defines the sidebar's position in the grid
+    grid-row: 1 / -1; // Extends the sidebar across all rows
+
+    display: flex; // Uses flexbox for layout
+    justify-content: center; // Centers content horizontally
+
+    @media only screen and (max-width: $bp-large) {
+        grid-column: 1 / -1; // Makes sidebar full-width on smaller screens
+        grid-row: 1 / 2; // Positions sidebar in the first row
+        justify-content: flex-end; // Aligns content to the right
+        align-items: center; // Centers content vertically
+    }
+}
+
+.nav-btn {
+    border: none; // Removes default button border
+    border-radius: 0; // Ensures no rounded edges
+
+    background-color: #fff; // Sets button background color
+    height: 2px; // Makes button a thin bar
+    width: 4.5rem; // Defines width of the bar
+    margin-top: 4rem; // Adds spacing from the top
+
+    &::before,
+    &::after {
+        background-color: #fff; // Sets the same color as the main button
+        height: 2px; // Ensures uniform thickness
+        width: 4.5rem; // Matches button width
+        content: ""; // Required for pseudo-elements
+        display: block; // Ensures they appear as block elements
+    }
+
+    &::before { transform: translateY(-1.5rem); } // Moves top bar upwards
+    &::after { transform: translateY(1.3rem); } // Moves bottom bar downwards
+
+    @media only screen and (max-width: $bp-large) {
+        margin-top: 0;
+        margin-right: 3rem; // Moves button to the right
+
+        &::before { transform: translateY(-1.2rem); } // Adjusts spacing for small screens
+        &::after { transform: translateY(1rem); } // Adjusts spacing for small screens
+    }
+}

@@ -1,0 +1,49 @@
+.footer {
+    background-color: $color-secondary; // Sets the footer background color using a variable
+    grid-column: full-start / full-end; // Spans the entire grid width from full-start to full-end
+    padding: 8rem; // Adds padding inside the footer for spacing
+}
+
+.nav {
+    list-style: none; // Removes default bullet points for list items
+
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));  
+    // Creates a responsive grid layout for navigation links
+    // - `auto-fit`: Adjusts the number of columns based on available space
+    // - `minmax(15rem, 1fr)`: Ensures each item is at least 15rem wide but can grow if space allows
+
+    grid-gap: 2rem; // Adds spacing between navigation items
+    align-items: center; // Vertically aligns items in the center
+
+    // Styles for normal and visited navigation links
+    &__link:link,
+    &__link:visited {
+        font-size: 1.4rem; // Sets text size
+        color: #fff; // White text color
+        text-decoration: none; // Removes underlines from links
+        font-family: $font-display; // Uses a predefined display font
+        text-transform: uppercase; // Converts text to uppercase
+        text-align: center; // Centers the text inside the link
+        padding: 1.5rem; // Adds padding for better clickability
+        display: block; // Makes the link a block element (helps with padding)
+        transition: all 0.2s; // Smooth transition for hover effects
+    }
+
+    // Hover and active state styles for navigation links
+    &__link:hover,
+    &__link:active {
+        background-color: rgba(#fff, 0.05); // Adds a subtle background on hover
+        transform: translateY(-3px); // Moves the link slightly up on hover for a nice effect
+    }
+}
+
+.copyright {
+    font-size: 1.4rem; // Sets text size
+    color: $color-grey-light-2; // Uses a light grey color for better readability
+    margin-top: 6rem; // Adds space above the copyright text
+    margin-right: auto; 
+    margin-left: auto; 
+    text-align: center; // Centers the text
+    width: 70%; // Restricts width to 70% for better readability on large screens
+}
